@@ -16,9 +16,9 @@ VALUES ('Restaurante A','009998880001-9','1','Rua Segunda, 77','12h00 até 18h00'
 ('Evento A','880009990001-0','3','Rua Terceira, 99','10h00 até 06h00','1200')
 
 INSERT INTO USUARIOS(Nome, Email, Senha, Telefone, Data_Criacao, Id_Tipo_Usuario, Id_Estabelecimento)
-VALUES('Gabriela Moretto','gabriela@gmail.com','senha1','40028922','8/8/2019','1','3'),
+VALUES('Gabriela Moretto','gabriela@gmail.com','senha1','40028922','8/8/2019','1',null),
 ('Alan Dias','alan@gmail.com','senha2','+55(11)40028922','8/8/2019','2',null),
-('Felipe Souza','felipe@gmail.com','senha3','4002-8922','8/8/2019','3',null)
+('Felipe Souza','felipe@gmail.com','senha3','4002-8922','8/8/2019','3',3)
 
 INSERT INTO CLIENTES(CPF, Data_Nascimento, RG, Endereco, Id_Usuario)
 VALUES('00000000000','10/07/1990','999999999','Rua Décima, 55','2')
@@ -31,8 +31,8 @@ INSERT INTO PRODUTOS(Titulo, Descricao, Preco, QtdEstoque, Id_Estabelec)VALUES
 					('Prato B','Produto de um restaurante','15.99','10','1'),
 					('VIP','Produto de uma festa','100.00','50','2'),
 					('Prato A','Produto de um outro restaurante','25.00','999','1')
-
-INSERT INTO PRODUTO_AGENDAMENTOS(Id_Agendamento, Id_Produtos)VALUES(1, 9);
-
-
 INSERT INTO AGENDAMENTOS(Id_Cliente, Id_Estabelecimento, Id_Status, Id_Lojista, Data_Criacao,Data_Agendamento) VALUES ('1','1','1','1','09/05/2019','09/05/2020');
+
+INSERT INTO PRODUTO_AGENDAMENTOS(Id_Agendamento, Id_Produtos)VALUES(1, 1);
+
+

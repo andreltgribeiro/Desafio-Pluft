@@ -11,7 +11,7 @@ namespace Desafio_Pluft.WebAPI.Interfaces
     {
 
         /// <summary>
-        /// Cadastra um usuário no banco de dados, o mesmo que cadastrar um administrador.
+        /// Cadastra um usuário no banco de dados.
         /// </summary>
         /// <param name="usuario">Usuarios Object</param>
         void CadastrarUsuario(CadastrarUsuarioViewModel usuario);
@@ -51,6 +51,11 @@ namespace Desafio_Pluft.WebAPI.Interfaces
         /// <returns></returns>
         CadastrarUsuarioViewModel RetornarUsuarioViewModel(AdministradorStandaloneViewModel usuarioModel);
 
+        /// <summary>
+        /// Busca Usuário Por ID
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns>Usuario</returns>
         Usuarios BuscarPorId(int Id);
     }
 }

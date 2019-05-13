@@ -19,14 +19,6 @@ namespace Desafio_Pluft.WebAPI.Repositories
             }
         }
 
-        public List<Estabelecimentos> ListarEstabelecimentos()
-        {
-            using (DesafioPluftContext ctx = new DesafioPluftContext())
-            {
-                return ctx.Estabelecimentos.ToList();
-            }
-        }
-
         public List<Lojistas> ListarLojistas()
         {
             using (DesafioPluftContext ctx = new DesafioPluftContext())

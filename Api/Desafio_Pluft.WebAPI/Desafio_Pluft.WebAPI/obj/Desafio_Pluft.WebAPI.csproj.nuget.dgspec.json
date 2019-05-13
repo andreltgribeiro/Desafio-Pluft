@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\web132\\Desktop\\Desafio-Pluft\\Api\\Desafio_Pluft.WebAPI\\Desafio_Pluft.WebAPI\\Desafio_Pluft.WebAPI.csproj": {}
+    "C:\\Users\\web132\\Desktop\\clone\\Desafio-Pluft\\Api\\Desafio_Pluft.WebAPI\\Desafio_Pluft.WebAPI\\Desafio_Pluft.WebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\web132\\Desktop\\Desafio-Pluft\\Api\\Desafio_Pluft.WebAPI\\Desafio_Pluft.WebAPI\\Desafio_Pluft.WebAPI.csproj": {
+    "C:\\Users\\web132\\Desktop\\clone\\Desafio-Pluft\\Api\\Desafio_Pluft.WebAPI\\Desafio_Pluft.WebAPI\\Desafio_Pluft.WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\web132\\Desktop\\Desafio-Pluft\\Api\\Desafio_Pluft.WebAPI\\Desafio_Pluft.WebAPI\\Desafio_Pluft.WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\web132\\Desktop\\clone\\Desafio-Pluft\\Api\\Desafio_Pluft.WebAPI\\Desafio_Pluft.WebAPI\\Desafio_Pluft.WebAPI.csproj",
         "projectName": "Desafio_Pluft.WebAPI",
-        "projectPath": "C:\\Users\\web132\\Desktop\\Desafio-Pluft\\Api\\Desafio_Pluft.WebAPI\\Desafio_Pluft.WebAPI\\Desafio_Pluft.WebAPI.csproj",
+        "projectPath": "C:\\Users\\web132\\Desktop\\clone\\Desafio-Pluft\\Api\\Desafio_Pluft.WebAPI\\Desafio_Pluft.WebAPI\\Desafio_Pluft.WebAPI.csproj",
         "packagesPath": "C:\\Users\\web132\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\web132\\Desktop\\Desafio-Pluft\\Api\\Desafio_Pluft.WebAPI\\Desafio_Pluft.WebAPI\\obj\\",
+        "outputPath": "C:\\Users\\web132\\Desktop\\clone\\Desafio-Pluft\\Api\\Desafio_Pluft.WebAPI\\Desafio_Pluft.WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

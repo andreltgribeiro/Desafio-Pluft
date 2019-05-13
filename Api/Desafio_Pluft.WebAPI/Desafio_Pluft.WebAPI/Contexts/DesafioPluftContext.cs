@@ -32,7 +32,7 @@ namespace Desafio_Pluft.WebAPI.Domains
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=.\\SQLEXPRESS; initial catalog = Desafio_Pluft;user id = sa; pwd = 132");
+                optionsBuilder.UseSqlServer("Data Source=.\\MSSQLSERVER2; initial catalog = Desafio_Pluft;user id = sa; pwd = 132");
             }
         }
 

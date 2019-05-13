@@ -9,12 +9,26 @@ namespace Desafio_Pluft.WebAPI.Interfaces
 {
     public interface ILojistaRepository
     {
+
+        /// <summary>
+        /// Busca um Lojista pelo id de usuário
+        /// </summary>
+        /// <param name="Idusuario"></param>
+        /// <returns></returns>
         Lojistas BuscarPorLojistaPorIdUsuario(int Idusuario);
 
-        List<Estabelecimentos> ListarEstabelecimentos();
-
+        /// <summary>
+        /// Retorna LojistaViewModel
+        /// </summary>
+        /// <param name="lojistaModel"></param>
+        /// <returns></returns>
         LojistaViewModel RetornarLojistaViewModel(LojistaStandaloneViewModel lojistaModel);
 
+
+        /// <summary>
+        /// Lista Todos os Lojistas
+        /// </summary>
+        /// <returns></returns>
         List<Lojistas> ListarLojistas();
     }
 }

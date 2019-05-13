@@ -1,5 +1,6 @@
 ﻿using Desafio_Pluft.WebAPI.Domains;
 using Desafio_Pluft.WebAPI.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,8 @@ namespace Desafio_Pluft.WebAPI.Repositories
             }
         }
 
+
+        
         public Estabelecimentos BuscarEstabelecimentosPorId(int IdEstabelecimento)
         {
             using (DesafioPluftContext ctx = new DesafioPluftContext())
@@ -31,6 +34,8 @@ namespace Desafio_Pluft.WebAPI.Repositories
             }
         }
 
+
+        
         public void CadastrarDados(Estabelecimentos estabelecimnetos)
         {
             using (DesafioPluftContext ctx = new DesafioPluftContext())
@@ -40,11 +45,13 @@ namespace Desafio_Pluft.WebAPI.Repositories
             }
         }
 
+
+
         public List<Estabelecimentos> ListarTodas()
         {
             using (DesafioPluftContext ctx = new DesafioPluftContext())
             {
-                return ctx.Estabelecimentos.ToList();
+                return ctx.Estabelecimentos.Include(x => x.IdTipoEstabelecNavigation).ToList();
             }
         }
     }

@@ -1,15 +1,9 @@
-
-
 import React, { Component } from 'react';
-import { AsyncStorage, StyleSheet, Text, TextInput, View, ImageBackground,TouchableOpacity, Image, Alert } from 'react-native';
-
+import { AsyncStorage, StyleSheet, Text, TextInput, View, ImageBackground, TouchableOpacity, Image, Alert } from 'react-native';
 import api from './src/services/api';
-
 import jwt from "jwt-decode";
-
 import { createSwitchNavigator, createAppContainer, createDrawerNavigator, createBottomTabNavigator } from 'react-navigation';
 
-import Login from './src/Pages/Usuarios/Login';
 import ListarLojistas from './src/Pages/Usuarios/ListarLojistas';
 import ListarClientes from './src/Pages/Usuarios/ListarClientes';
 import CadastrarLojista from './src/Pages/Usuarios/CadastrarLojista';
@@ -28,42 +22,38 @@ import HomeAdm from './src/Pages/Homes/HomeAdm';
 import HomeCliente from './src/Pages/Homes/HomeCliente';
 import HomeLojista from './src/Pages/Homes//HomeLojista';
 
-
-
-
 class App extends Component {
 
   render() {
-      return (
-          <AppContainer />
-      )
+    return (
+      <AppContainer />
+    )
   }
 }
-
 export default App;
 
 class TelaInicial extends Component {
 
   constructor(props) {
-      super(props);
-      this.state = { email : '', senha : '' };
+    super(props);
+    this.state = { email: '', senha: '' };
   }
 
 
   login = async () => {
-    if(this.state.email == ''){
-        Alert.alert(
-            "Erro",
-            "Informe um email",
-            [
-              
-              { text: "OK", onPress: () => console.log("OK Pressed") }
-            ],
-            { cancelable: false }
-          );
-    }else{
+    if (this.state.email == '') {
+      Alert.alert(
+        "Erro",
+        "Informe um email",
+        [
 
-      if(this.state.senha == ''){
+          { text: "OK", onPress: () => console.log("OK Pressed") }
+        ],
+        { cancelable: false }
+      );
+    } else {
+
+      if (this.state.senha == '') {
         Alert.alert(
           "Erro",
           "Informe sua senha",
@@ -71,31 +61,31 @@ class TelaInicial extends Component {
             { text: "OK", onPress: () => console.log("OK Pressed") }
           ],
           { cancelable: false }
-          );
-        }else{
-          const resposta = await api.post("/Login", {
-            email: this.state.email,
-            senha: this.state.senha
-          });
-          const token = resposta.data.token;
-          await AsyncStorage.setItem("userToken", token);
-          if ( jwt(token).permissao == 'Administrador' ) {
-            this.props.navigation.navigate('Home - Administrador')            
-          }
-          if ( jwt(token).permissao == 'Cliente' ) {
-            this.props.navigation.navigate('Home - Cliente')            
-          }if(jwt(token).permissao == 'Lojista'){
-            this.props.navigation.navigate('Home - Lojista')     
-          }
+        );
+      } else {
+        const resposta = await api.post("/Login", {
+          email: this.state.email,
+          senha: this.state.senha
+        });
+        const token = resposta.data.token;
+        await AsyncStorage.setItem("userToken", token);
+        if (jwt(token).permissao == 'Administrador') {
+          this.props.navigation.navigate('Home - Administrador')
+        }
+        if (jwt(token).permissao == 'Cliente') {
+          this.props.navigation.navigate('Home - Cliente')
+        } if (jwt(token).permissao == 'Lojista') {
+          this.props.navigation.navigate('Home - Lojista')
         }
       }
-      };
+    }
+  };
 
-  
+
 
   render() {
-      return (
-        <ImageBackground
+    return (
+      <ImageBackground
         source={require("./src/assets/img/login.png")}
         style={StyleSheet.absoluteFillObject}
       >
@@ -107,7 +97,7 @@ class TelaInicial extends Component {
           />
           <TextInput
             style={styles.inputLogin}
-            placeholder="email"
+            placeholder="Email"
             placeholderTextColor="#FFFFFF"
             underlineColorAndroid="#FFFFFF"
             required
@@ -116,7 +106,7 @@ class TelaInicial extends Component {
 
           <TextInput
             style={styles.inputLogin}
-            placeholder="senha"
+            placeholder="Senha"
             placeholderTextColor="#FFFFFF"
             password="true"
             underlineColorAndroid="#FFFFFF"
@@ -130,18 +120,17 @@ class TelaInicial extends Component {
           </TouchableOpacity>
         </View>
       </ImageBackground>
-      )
+    )
   }
 }
 
 const ClienteStack = createBottomTabNavigator(
   {
-    'Home - Cliente':HomeCliente,
-    'Lista Produtos':ListaProdutos,
-    'Lista Estabelecimento':ListaEstabelecimentos,
-    'Lista Agendamentos':ListarAgendamentos,
-    'Cadastra Agendamento':CadastrarAgendamentos,
-    'Lista Meus Agendamentos':ListarAgendamentosUserLogado
+    'Home - Cliente': HomeCliente,
+    'Lista Produtos': ListaProdutos,
+    'Lista Estabelecimento': ListaEstabelecimentos,
+    'Cadastra Agendamento': CadastrarAgendamentos,
+    'Lista Meus Agendamentos': ListarAgendamentosUserLogado
 
   },
   {
@@ -158,17 +147,16 @@ const ClienteStack = createBottomTabNavigator(
         height: 50
       }
     }
-});
+  });
 
 const LojistaStack = createBottomTabNavigator(
   {
-    'Home - Lojista':HomeLojista,
-    'Lista Produtos':ListaProdutos,
-    'Cadastra Estabelecimento':CadastrarEstabelec,
-    'Atualiza Estabelecimento':AtualizarEstabelec,
-    'Cadastra Produtos':CadastrarProdutos,
-    'Atualiza Prodtos':AtualizarProdutos,
-    'Lista Produtos':ListaProdutos
+    'Home - Lojista': HomeLojista,
+    'Lista Produtos': ListaProdutos,
+    'Atualiza Estabelecimento': AtualizarEstabelec,
+    'Cadastra Produtos': CadastrarProdutos,
+    'Atualiza Prodtos': AtualizarProdutos,
+    'Lista Produtos': ListaProdutos
   },
   {
     initialRouteName: "Home - Lojista",
@@ -184,17 +172,18 @@ const LojistaStack = createBottomTabNavigator(
         height: 50
       }
     }
-});
+  });
 
 const AdministradorStack = createBottomTabNavigator(
   {
-    'Tela Inicial': { screen: TelaInicial },
     'Home - Administrador': HomeAdm,
-    'Listar Lojistas':ListarLojistas,
-    'Listar Clientes':ListarClientes,
-    'CadastrarLojista':CadastrarLojista,
-    'CastrarAdm':CadastrarAdm,
-    'CadastrarCliente':CadastrarCliente,
+    'Listar Lojistas': ListarLojistas,
+    'Listar Clientes': ListarClientes,
+    'Lista Agendamentos': ListarAgendamentos,
+    'CadastrarLojista': CadastrarLojista,
+    'Cadastra Estabelecimento': CadastrarEstabelec,
+    'CastrarAdm': CadastrarAdm,
+    'CadastrarCliente': CadastrarCliente,
 
   },
   {
@@ -211,7 +200,7 @@ const AdministradorStack = createBottomTabNavigator(
         height: 50
       }
     }
-});
+  });
 
 
 
@@ -221,7 +210,7 @@ const AppSwitchNavigator = createSwitchNavigator({
   'Tela inicial': { screen: TelaInicial },
   'Home - Administrador': { screen: AdministradorStack },
   'Home - Cliente': { screen: ClienteStack },
-  'Home - Lojista': { screen : LojistaStack}
+  'Home - Lojista': { screen: LojistaStack }
 })
 
 const AppContainer = createAppContainer(AppSwitchNavigator);
@@ -269,6 +258,7 @@ const styles = StyleSheet.create({
   inputLogin: {
     width: 240,
     marginBottom: 10,
-    fontSize: 10
+    fontSize: 10,
+    color: 'white'
   }
 });

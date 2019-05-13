@@ -43,9 +43,9 @@ namespace Desafio_Pluft.WebAPI.Repositories
 
         public void Cadastrar(Agendamentos agendamento, List<int> produtos)
         {
-            List<Agendamentos> agenda = new List<Agendamentos>();
+            agendamento.DataCriacao = DateTime.Now;
 
-            
+
 
             using (DesafioPluftContext ctx = new DesafioPluftContext())
             {
@@ -70,7 +70,12 @@ namespace Desafio_Pluft.WebAPI.Repositories
             {
                 Clientes clienteBuscado = ctx.Clientes.Where(p => p.IdUsuario == idCliente).FirstOrDefault();
 
-                return ctx.Agendamentos.Include(x => x.IdClienteNavigation.IdUsuarioNavigation).Include(x=>x.IdStatusNavigation).Include(x => x.ProdutoAgendamentos).Include(x => x.IdClienteNavigation).Where(x => x.IdCliente == clienteBuscado.Id).ToList();
+                return ctx.Agendamentos.Include(x => x.IdClienteNavigation.IdUsuarioNavigation)
+                    .Include(x=>x.IdStatusNavigation)
+                    .Include(x => x.ProdutoAgendamentos)
+                    .Include(x => x.IdClienteNavigation)
+                    .Include(c => c.IdClienteNavigation.IdUsuarioNavigation)
+                    .Where(x => x.IdCliente == clienteBuscado.Id).ToList();
             }
         }
 
@@ -80,7 +85,10 @@ namespace Desafio_Pluft.WebAPI.Repositories
             {
                 Lojistas lojistaBuscado = ctx.Lojistas.Where(p => p.IdUsuario == idLojista).FirstOrDefault();
 
-                return ctx.Agendamentos.Include(x => x.IdLojistaNavigation.IdUsuarioNavigation).Include(x => x.ProdutoAgendamentos).Where(x => x.IdLojista == lojistaBuscado.Id).ToList();
+                return ctx.Agendamentos.Include(x => x.IdLojistaNavigation.IdUsuarioNavigation)
+                    .Include(x => x.ProdutoAgendamentos)
+                    .Include(c => c.IdClienteNavigation.IdUsuarioNavigation)
+                    .Where(x => x.IdLojista == lojistaBuscado.Id).ToList();
             }
         }
 
@@ -93,6 +101,7 @@ namespace Desafio_Pluft.WebAPI.Repositories
                         .Include(x => x.IdClienteNavigation)
                         .Include(x => x.IdStatusNavigation)
                         .Include(x => x.ProdutoAgendamentos)
+                        .Include(c=>c.IdClienteNavigation.IdUsuarioNavigation)
                         .ToList();
             }
         }

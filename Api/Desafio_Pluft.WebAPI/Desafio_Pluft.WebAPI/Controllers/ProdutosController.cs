@@ -24,13 +24,14 @@ namespace Desafio_Pluft.WebAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrador, Lojista, Cliente")]//Determina qual tipo de usuário pode utilizar esse Método
         public IActionResult ListarTodos()
         {
-            try
+            try //Tenta Executar os comandos abaixo
             {
-                List<Produtos> produtos = ProdutosRepository.ListarTodos();
+                List<Produtos> produtos = ProdutosRepository.ListarTodos(); // Cria uma lista do tipo Produtos Arrmazenando Todos os produtos cadastrados
 
-                var resultado = from c in produtos
+                var resultado = from c in produtos //Determina como será apresentado o Json que será enviado como resultado 
                                 select new
                                 {
                                     Id = c.Id,
@@ -42,50 +43,58 @@ namespace Desafio_Pluft.WebAPI.Controllers
                                     Preco = c.Preco
                                 };
 
-                return Ok(resultado);
+                return Ok(resultado); //Retorna 200 Ok passando a variável resultado
             }
-            catch 
+            catch (Exception ex) //Armazena um erro caso as instruções acima não consigam ser executadas armazenando na variável ex do tipo 
             {
-
-                return BadRequest();
+                return BadRequest(new //Criando e retornando a mensagem de erro que será enviada
+                {
+                    mensagem = "Erro: " + ex // Inserindo erro na mensagem
+                });
             }
         }
 
-        [Authorize(Roles = "Administrador, Lojista")]
+        [Authorize(Roles = "Administrador, Lojista")]//Determina qual tipo de usuário pode utilizar esse Método
         [HttpPut]
         public IActionResult Atualizar(Produtos novoproduto)
         {
-            try
+            try //Tenta Executar os comandos abaixo
             {
-                Produtos produtoCadastrado = ProdutosRepository.BuscarPorId(novoproduto.Id);
+                Produtos produtoCadastrado = ProdutosRepository.BuscarPorId(novoproduto.Id); //Cria uma variável do tipo Produtos e utiliza o étodo BuscarPorId para encontrar um produto com o id correspondente
 
-                if (produtoCadastrado == null)
+                if (produtoCadastrado == null) //Verifica se o Produto Buscado não é nulo
                 {
-                    return NotFound();
+                    return NotFound(); // Retorna Not Found 404
                 }
 
-                ProdutosRepository.AtualizarDados(produtoCadastrado, novoproduto );
+                ProdutosRepository.AtualizarDados(produtoCadastrado, novoproduto ); // Usa o método AtualizarDados para comparar as diferenças do produto cadastrado com o que novo e armazena as informações no DB
 
-                return Ok();
+                return Ok();//Retorna 200 Ok
             }
-            catch
+            catch (Exception ex) //Armazena um erro caso as instruções acima não consigam ser executadas armazenando na variável ex do tipo 
             {
-                return BadRequest();
+                return BadRequest(new //Criando e retornando a mensagem de erro que será enviada
+                {
+                    mensagem = "Erro: " + ex // Inserindo erro na mensagem
+                });
             }
         }
 
         [HttpPost]
-        [Authorize(Roles = "Administrador, Lojista")]
+        [Authorize(Roles = "Administrador, Lojista")]//Determina qual tipo de usuário pode utilizar esse Método
         public IActionResult Cadastrar(Produtos produtos)
         {
-            try
+            try//Tenta Executar os comandos abaixo
             {
-                ProdutosRepository.CadastrarProduto(produtos);
-                return Ok();
+                ProdutosRepository.CadastrarProduto(produtos); //Utiliza o método CadastrarProduto e passa o produto informado pelo Post e armazena no Banco de dados
+                return Ok(); //Retorna 200 Ok
             }
-            catch (Exception ex)
+            catch (Exception ex) //Armazena um erro caso as instruções acima não consigam ser executadas armazenando na variável ex do tipo 
             {
-                throw ex;
+                return BadRequest(new //Criando e retornando a mensagem de erro que será enviada
+                {
+                    mensagem = "Erro: " + ex // Inserindo erro na mensagem
+                });
             }
         }
 

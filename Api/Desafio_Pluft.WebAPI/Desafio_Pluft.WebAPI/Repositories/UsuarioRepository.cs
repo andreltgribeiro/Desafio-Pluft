@@ -31,11 +31,9 @@ namespace Desafio_Pluft.WebAPI.Repositories
             }
         }
 
-        public void CadastrarUsuario(CadastrarUsuarioViewModel usuario) // O mesmo que cadastrar um administrador, tb serve para cadastrar um administrador.
+        public void CadastrarUsuario(CadastrarUsuarioViewModel usuario) 
         {
             Usuarios usuarioTemp;
-
-
 
             // Defini os valores do objeto Usuario
             usuarioTemp = new Usuarios
@@ -62,8 +60,6 @@ namespace Desafio_Pluft.WebAPI.Repositories
             };
 
 
-
-
             using (DesafioPluftContext ctx = new DesafioPluftContext())
             {
                 ctx.Usuarios.Add(usuarioTemp);
@@ -79,6 +75,7 @@ namespace Desafio_Pluft.WebAPI.Repositories
                 CadastrarUsuario(lojistaModel.UsuarioViewModel);
 
                 Usuarios usuario = ctx.Usuarios.Last();
+                usuario.IdTipoUsuario = 3;
                 lojistaModel.Lojista.IdUsuario = usuario.Id;
                 ctx.Lojistas.Add(lojistaModel.Lojista);
 
@@ -93,7 +90,8 @@ namespace Desafio_Pluft.WebAPI.Repositories
             {
                 CadastrarUsuario(clienteModel.UsuarioViewModel);
 
-                Usuarios usuario = ctx.Usuarios.Last(); 
+                Usuarios usuario = ctx.Usuarios.Last();
+                usuario.IdTipoUsuario = 2;
                 clienteModel.Cliente.IdUsuario = usuario.Id;
                 ctx.Clientes.Add(clienteModel.Cliente);
                 ctx.SaveChanges();

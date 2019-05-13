@@ -40,3 +40,17 @@ C:\Users\44680479841\Desktop\clone_desafio\Desafio-Pluft\Api\Desafio_Pluft.WebAP
 C:\Users\44680479841\Desktop\clone_desafio\Desafio-Pluft\Api\Desafio_Pluft.WebAPI\Desafio_Pluft.WebAPI\obj\Debug\netcoreapp2.1\Desafio_Pluft.WebAPI.RazorTargetAssemblyInfo.cache
 C:\Users\44680479841\Desktop\clone_desafio\Desafio-Pluft\Api\Desafio_Pluft.WebAPI\Desafio_Pluft.WebAPI\obj\Debug\netcoreapp2.1\Desafio_Pluft.WebAPI.dll
 C:\Users\44680479841\Desktop\clone_desafio\Desafio-Pluft\Api\Desafio_Pluft.WebAPI\Desafio_Pluft.WebAPI\obj\Debug\netcoreapp2.1\Desafio_Pluft.WebAPI.pdb
+C:\Users\web132\Desktop\clone\Desafio-Pluft\Api\Desafio_Pluft.WebAPI\Desafio_Pluft.WebAPI\bin\Debug\netcoreapp2.1\Desafio_Pluft.WebAPI.deps.json
+C:\Users\web132\Desktop\clone\Desafio-Pluft\Api\Desafio_Pluft.WebAPI\Desafio_Pluft.WebAPI\bin\Debug\netcoreapp2.1\Desafio_Pluft.WebAPI.runtimeconfig.json
+C:\Users\web132\Desktop\clone\Desafio-Pluft\Api\Desafio_Pluft.WebAPI\Desafio_Pluft.WebAPI\bin\Debug\netcoreapp2.1\Desafio_Pluft.WebAPI.runtimeconfig.dev.json
+C:\Users\web132\Desktop\clone\Desafio-Pluft\Api\Desafio_Pluft.WebAPI\Desafio_Pluft.WebAPI\bin\Debug\netcoreapp2.1\Desafio_Pluft.WebAPI.dll
+C:\Users\web132\Desktop\clone\Desafio-Pluft\Api\Desafio_Pluft.WebAPI\Desafio_Pluft.WebAPI\bin\Debug\netcoreapp2.1\Desafio_Pluft.WebAPI.pdb
+C:\Users\web132\Desktop\clone\Desafio-Pluft\Api\Desafio_Pluft.WebAPI\Desafio_Pluft.WebAPI\obj\Debug\netcoreapp2.1\Desafio_Pluft.WebAPI.csprojAssemblyReference.cache
+C:\Users\web132\Desktop\clone\Desafio-Pluft\Api\Desafio_Pluft.WebAPI\Desafio_Pluft.WebAPI\obj\Debug\netcoreapp2.1\Desafio_Pluft.WebAPI.csproj.CoreCompileInputs.cache
+C:\Users\web132\Desktop\clone\Desafio-Pluft\Api\Desafio_Pluft.WebAPI\Desafio_Pluft.WebAPI\obj\Debug\netcoreapp2.1\Desafio_Pluft.WebAPI.RazorAssemblyInfo.cache
+C:\Users\web132\Desktop\clone\Desafio-Pluft\Api\Desafio_Pluft.WebAPI\Desafio_Pluft.WebAPI\obj\Debug\netcoreapp2.1\Desafio_Pluft.WebAPI.RazorAssemblyInfo.cs
+C:\Users\web132\Desktop\clone\Desafio-Pluft\Api\Desafio_Pluft.WebAPI\Desafio_Pluft.WebAPI\obj\Debug\netcoreapp2.1\Desafio_Pluft.WebAPI.AssemblyInfoInputs.cache
+C:\Users\web132\Desktop\clone\Desafio-Pluft\Api\Desafio_Pluft.WebAPI\Desafio_Pluft.WebAPI\obj\Debug\netcoreapp2.1\Desafio_Pluft.WebAPI.AssemblyInfo.cs
+C:\Users\web132\Desktop\clone\Desafio-Pluft\Api\Desafio_Pluft.WebAPI\Desafio_Pluft.WebAPI\obj\Debug\netcoreapp2.1\Desafio_Pluft.WebAPI.RazorTargetAssemblyInfo.cache
+C:\Users\web132\Desktop\clone\Desafio-Pluft\Api\Desafio_Pluft.WebAPI\Desafio_Pluft.WebAPI\obj\Debug\netcoreapp2.1\Desafio_Pluft.WebAPI.dll
+C:\Users\web132\Desktop\clone\Desafio-Pluft\Api\Desafio_Pluft.WebAPI\Desafio_Pluft.WebAPI\obj\Debug\netcoreapp2.1\Desafio_Pluft.WebAPI.pdb

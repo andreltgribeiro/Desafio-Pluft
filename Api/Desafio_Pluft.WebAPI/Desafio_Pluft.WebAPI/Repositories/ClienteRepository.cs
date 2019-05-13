@@ -11,6 +11,8 @@ namespace Desafio_Pluft.WebAPI.Repositories
 {
     public class ClienteRepository : IClienteRepository
     {
+
+        
         public Clientes BuscarClientePorIdUsuario(int idUsuario)
         {
             using (DesafioPluftContext ctx = new DesafioPluftContext())
@@ -19,6 +21,8 @@ namespace Desafio_Pluft.WebAPI.Repositories
             }
         }
 
+
+        
         public List<Clientes> ListarTodos()
         {
             using (DesafioPluftContext ctx = new DesafioPluftContext())
@@ -26,6 +30,7 @@ namespace Desafio_Pluft.WebAPI.Repositories
                 return ctx.Clientes.Include(x => x.IdUsuarioNavigation).ToList();
             }
         }
+
 
         public ClienteViewModel RetornarClienteViewModel(ClienteStandaloneViewModel ClienteModel)
         {

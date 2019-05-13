@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Desafio_Pluft.WebAPI.Repositories
 {
-    public class ProdutoRepository : IProdutosRepository
+    public class ProdutoRepository : IProdutoRepository
     {
         public List<Produtos> ListarTodos()
         {

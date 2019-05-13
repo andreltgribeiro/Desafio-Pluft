@@ -27,10 +27,12 @@ INSERT INTO LOJISTAS(CPF, Data_Nascimento, RG, Endereco, Id_Usuario)
 VALUES('00000000000','12/09/1989','999999999','Rua Quatro, 55','3')
 
 INSERT INTO PRODUTOS(Titulo, Descricao, Preco, QtdEstoque, Id_Estabelec)VALUES
-					('Prato A','Produto de um restaurante','12.99','10','6'),
-					('Prato B','Produto de um restaurante','15.99','10','6'),
+					('Prato A','Produto de um restaurante','12.99','10','1'),
+					('Prato B','Produto de um restaurante','15.99','10','1'),
 					('VIP','Produto de uma festa','100.00','50','2'),
 					('Prato A','Produto de um outro restaurante','25.00','999','1')
+
+INSERT INTO PRODUTO_AGENDAMENTOS(Id_Agendamento, Id_Produtos)VALUES(1, 2)
 
 
 INSERT INTO AGENDAMENTOS(Id_Cliente, Id_Estabelecimento, Id_Status, Id_Lojista, Data_Criacao,Data_Agendamento) VALUES ('1','1','1','1','09/05/2019','09/05/2020')

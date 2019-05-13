@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Desafio_Pluft.WebAPI.Interfaces
 {
-    public interface IProdutosRepository
+    public interface IProdutoRepository
     {
         List<Produtos> ListarTodos();
 

@@ -23,6 +23,7 @@ namespace Desafio_Pluft.WebAPI.Controllers
         private IClienteRepository ClienteRepository { get; set; }
         private IUsuarioRepository UsuarioRepository { get; set; }
         private ILojistaRepository LojistaRepository { get; set; }
+        private IProdutoAgendamentoRepository ProdutoAgendamentoRepository { get; set; }
 
         public AgendamentosController()
         {
@@ -30,6 +31,7 @@ namespace Desafio_Pluft.WebAPI.Controllers
             ClienteRepository = new ClienteRepository();
             LojistaRepository = new LojistaRepository();
             UsuarioRepository = new UsuarioRepository();
+            ProdutoAgendamentoRepository = new ProdutoAgendamentoRepository();
         }
 
         [HttpGet]
@@ -39,6 +41,16 @@ namespace Desafio_Pluft.WebAPI.Controllers
             try
             {
                 List<Agendamentos> agendamentos = AgendamentoRepository.ListarTodos();
+                List<ProdutoAgendamentos> produtosgendamentos = ProdutoAgendamentoRepository.ListarProdutoComAgendamento();
+
+                var produtoagendamento = from c in produtosgendamentos
+                                         select new
+                                       {
+                                             IdAgendamento = c.IdAgendamentoNavigation.Id,
+                                             IdProduto = c.IdProdutosNavigation.Id,
+                                             IdNomeProduto = c.IdProdutosNavigation.Titulo
+
+                                       };
 
                 var retorno = from c in agendamentos
                                        select new
@@ -50,7 +62,8 @@ namespace Desafio_Pluft.WebAPI.Controllers
                                            nomeLojista = c.IdLojistaNavigation.IdUsuarioNavigation.Nome,
                                            dataAgendamento = c.DataAgendamento,
                                            dataCriacao = c.DataCriacao,
-                                           statusAgendamento = c.IdStatusNavigation.Nome
+                                           statusAgendamento = c.IdStatusNavigation.Nome,
+                                           idProdutoAgendamento = produtoagendamento
                                        };
                 return Ok(retorno);
             }
@@ -62,11 +75,11 @@ namespace Desafio_Pluft.WebAPI.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Administrador, Cliente")]
-        public IActionResult Cadastrar(Agendamentos agendamento)
+        public IActionResult Cadastrar(Agendamentos agendamento, List<int> produtos)
         {
             try
             {
-                AgendamentoRepository.Cadastrar(agendamento);
+                AgendamentoRepository.Cadastrar(agendamento, produtos);
 
                 return Ok();
             }

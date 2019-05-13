@@ -16,7 +16,7 @@ namespace Desafio_Pluft.WebAPI.Controllers
     [ApiController]
     public class ProdutosController : ControllerBase
     {
-        private IProdutosRepository ProdutosRepository { get; set; }
+        private IProdutoRepository ProdutosRepository { get; set; }
 
         public ProdutosController()
         {

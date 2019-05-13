@@ -1,5 +1,6 @@
 ﻿using Desafio_Pluft.WebAPI.Domains;
 using Desafio_Pluft.WebAPI.Interfaces;
+using Desafio_Pluft.WebAPI.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -40,12 +41,25 @@ namespace Desafio_Pluft.WebAPI.Repositories
             }
         }
 
-        public void Cadastrar(Agendamentos agendamento)
+        public void Cadastrar(Agendamentos agendamento, List<int> produtos)
         {
+            List<Agendamentos> agenda = new List<Agendamentos>();
+
+            
 
             using (DesafioPluftContext ctx = new DesafioPluftContext())
             {
                 ctx.Agendamentos.Add(agendamento);
+                ctx.SaveChanges();
+                foreach (var item in produtos)
+                {
+                    ctx.ProdutoAgendamentos.Add(new ProdutoAgendamentos()
+                    {
+                        IdAgendamento = agendamento.Id,
+                        IdProdutos = item
+
+                    });
+                }
                 ctx.SaveChanges();
             }
         }
@@ -56,7 +70,7 @@ namespace Desafio_Pluft.WebAPI.Repositories
             {
                 Clientes clienteBuscado = ctx.Clientes.Where(p => p.IdUsuario == idCliente).FirstOrDefault();
 
-                return ctx.Agendamentos.Include(x => x.IdClienteNavigation.IdUsuarioNavigation).Include(x=>x.IdStatusNavigation).Include(x => x.IdClienteNavigation).Where(x => x.IdCliente == clienteBuscado.Id).ToList();
+                return ctx.Agendamentos.Include(x => x.IdClienteNavigation.IdUsuarioNavigation).Include(x=>x.IdStatusNavigation).Include(x => x.ProdutoAgendamentos).Include(x => x.IdClienteNavigation).Where(x => x.IdCliente == clienteBuscado.Id).ToList();
             }
         }
 
@@ -66,7 +80,7 @@ namespace Desafio_Pluft.WebAPI.Repositories
             {
                 Lojistas lojistaBuscado = ctx.Lojistas.Where(p => p.IdUsuario == idLojista).FirstOrDefault();
 
-                return ctx.Agendamentos.Include(x => x.IdLojistaNavigation.IdUsuarioNavigation).Where(x => x.IdLojista == lojistaBuscado.Id).ToList();
+                return ctx.Agendamentos.Include(x => x.IdLojistaNavigation.IdUsuarioNavigation).Include(x => x.ProdutoAgendamentos).Where(x => x.IdLojista == lojistaBuscado.Id).ToList();
             }
         }
 
@@ -74,8 +88,15 @@ namespace Desafio_Pluft.WebAPI.Repositories
         {
             using (DesafioPluftContext ctx = new DesafioPluftContext())
             {
-                return ctx.Agendamentos.Include(x => x.IdLojistaNavigation.IdUsuarioNavigation).Include(x => x.IdClienteNavigation).Include(x => x.IdStatusNavigation).ToList();
+                return ctx.Agendamentos
+                        .Include(x => x.IdLojistaNavigation.IdUsuarioNavigation)
+                        .Include(x => x.IdClienteNavigation)
+                        .Include(x => x.IdStatusNavigation)
+                        .Include(x => x.ProdutoAgendamentos)
+                        .ToList();
             }
         }
+
+
     }
 }

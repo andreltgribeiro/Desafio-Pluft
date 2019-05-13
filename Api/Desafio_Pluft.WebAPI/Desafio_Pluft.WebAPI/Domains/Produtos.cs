@@ -15,7 +15,7 @@ namespace Desafio_Pluft.WebAPI.Domains
         public string Descricao { get; set; }
         public decimal Preco { get; set; }
         public int QtdEstoque { get; set; }
-        public int IdEstabelec { get; set; }
+        public int? IdEstabelec { get; set; }
 
         public Estabelecimentos IdEstabelecNavigation { get; set; }
         public ICollection<ProdutoAgendamentos> ProdutoAgendamentos { get; set; }

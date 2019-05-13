@@ -1,5 +1,6 @@
 CREATE DATABASE Desafio_Pluft
 
+
 USE Desafio_Pluft
 
 CREATE TABLE TIPO_ESTABELECIMENTO(
@@ -74,7 +75,7 @@ CREATE TABLE PRODUTOS(
 	Id int identity primary key,
 	Titulo VARCHAR(100) not null,
 	Descricao VARCHAR(255),
-	Preco Decimal not null,
+	Preco money not null,
 	QtdEstoque int not null,
 	Id_Estabelec INT FOREIGN KEY REFERENCES ESTABELECIMENTOS(Id)
 

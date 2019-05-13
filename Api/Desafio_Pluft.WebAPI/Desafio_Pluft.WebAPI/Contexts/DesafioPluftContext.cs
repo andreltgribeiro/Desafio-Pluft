@@ -1,4 +1,5 @@
 ﻿using System;
+using Desafio_Pluft.WebAPI.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -31,7 +32,7 @@ namespace Desafio_Pluft.WebAPI.Domains
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=.\\MSSQLSERVER2; initial catalog = Desafio_Pluft;user id = sa; pwd = 132");
+                optionsBuilder.UseSqlServer("Data Source=.\\SQLEXPRESS; initial catalog = Desafio_Pluft;user id = sa; pwd = 132");
             }
         }
 
@@ -60,22 +61,22 @@ namespace Desafio_Pluft.WebAPI.Domains
                 entity.HasOne(d => d.IdClienteNavigation)
                     .WithMany(p => p.Agendamentos)
                     .HasForeignKey(d => d.IdCliente)
-                    .HasConstraintName("FK__AGENDAMEN__Id_Cl__4F7CD00D");
+                    .HasConstraintName("FK__AGENDAMEN__Id_Cl__619B8048");
 
                 entity.HasOne(d => d.IdEstabelecimentoNavigation)
                     .WithMany(p => p.Agendamentos)
                     .HasForeignKey(d => d.IdEstabelecimento)
-                    .HasConstraintName("FK__AGENDAMEN__Id_Es__5070F446");
+                    .HasConstraintName("FK__AGENDAMEN__Id_Es__628FA481");
 
                 entity.HasOne(d => d.IdLojistaNavigation)
                     .WithMany(p => p.Agendamentos)
                     .HasForeignKey(d => d.IdLojista)
-                    .HasConstraintName("FK__AGENDAMEN__Id_Lo__52593CB8");
+                    .HasConstraintName("FK__AGENDAMEN__Id_Lo__6477ECF3");
 
                 entity.HasOne(d => d.IdStatusNavigation)
                     .WithMany(p => p.Agendamentos)
                     .HasForeignKey(d => d.IdStatus)
-                    .HasConstraintName("FK__AGENDAMEN__Id_St__5165187F");
+                    .HasConstraintName("FK__AGENDAMEN__Id_St__6383C8BA");
             });
 
             modelBuilder.Entity<Clientes>(entity =>
@@ -83,11 +84,11 @@ namespace Desafio_Pluft.WebAPI.Domains
                 entity.ToTable("CLIENTES");
 
                 entity.HasIndex(e => e.Cpf)
-                    .HasName("UQ__CLIENTES__C1F897311A59CD88")
+                    .HasName("UQ__CLIENTES__C1F8973113B031C4")
                     .IsUnique();
 
                 entity.HasIndex(e => e.Rg)
-                    .HasName("UQ__CLIENTES__321537C88262F8BB")
+                    .HasName("UQ__CLIENTES__321537C8160B1875")
                     .IsUnique();
 
                 entity.Property(e => e.Cpf)
@@ -116,7 +117,7 @@ namespace Desafio_Pluft.WebAPI.Domains
                 entity.HasOne(d => d.IdUsuarioNavigation)
                     .WithMany(p => p.Clientes)
                     .HasForeignKey(d => d.IdUsuario)
-                    .HasConstraintName("FK__CLIENTES__Id_Usu__47DBAE45");
+                    .HasConstraintName("FK__CLIENTES__Id_Usu__59FA5E80");
             });
 
             modelBuilder.Entity<Estabelecimentos>(entity =>
@@ -124,7 +125,7 @@ namespace Desafio_Pluft.WebAPI.Domains
                 entity.ToTable("ESTABELECIMENTOS");
 
                 entity.HasIndex(e => e.Cnpj)
-                    .HasName("UQ__ESTABELE__AA57D6B47D611E84")
+                    .HasName("UQ__ESTABELE__AA57D6B4F7C7134F")
                     .IsUnique();
 
                 entity.Property(e => e.Cnpj)
@@ -158,7 +159,7 @@ namespace Desafio_Pluft.WebAPI.Domains
                 entity.HasOne(d => d.IdTipoEstabelecNavigation)
                     .WithMany(p => p.Estabelecimentos)
                     .HasForeignKey(d => d.IdTipoEstabelec)
-                    .HasConstraintName("FK__ESTABELEC__Id_Ti__3E52440B");
+                    .HasConstraintName("FK__ESTABELEC__Id_Ti__5070F446");
             });
 
             modelBuilder.Entity<Lojistas>(entity =>
@@ -166,11 +167,11 @@ namespace Desafio_Pluft.WebAPI.Domains
                 entity.ToTable("LOJISTAS");
 
                 entity.HasIndex(e => e.Cpf)
-                    .HasName("UQ__LOJISTAS__C1F89731792801A8")
+                    .HasName("UQ__LOJISTAS__C1F89731FAA8BD63")
                     .IsUnique();
 
                 entity.HasIndex(e => e.Rg)
-                    .HasName("UQ__LOJISTAS__321537C8F1C15B51")
+                    .HasName("UQ__LOJISTAS__321537C8B35D4903")
                     .IsUnique();
 
                 entity.Property(e => e.Cpf)
@@ -199,7 +200,7 @@ namespace Desafio_Pluft.WebAPI.Domains
                 entity.HasOne(d => d.IdUsuarioNavigation)
                     .WithMany(p => p.Lojistas)
                     .HasForeignKey(d => d.IdUsuario)
-                    .HasConstraintName("FK__LOJISTAS__Id_Usu__4CA06362");
+                    .HasConstraintName("FK__LOJISTAS__Id_Usu__5EBF139D");
             });
 
             modelBuilder.Entity<ProdutoAgendamentos>(entity =>
@@ -213,12 +214,12 @@ namespace Desafio_Pluft.WebAPI.Domains
                 entity.HasOne(d => d.IdAgendamentoNavigation)
                     .WithMany(p => p.ProdutoAgendamentos)
                     .HasForeignKey(d => d.IdAgendamento)
-                    .HasConstraintName("FK__PRODUTO_A__Id_Ag__75A278F5");
+                    .HasConstraintName("FK__PRODUTO_A__Id_Ag__6A30C649");
 
                 entity.HasOne(d => d.IdProdutosNavigation)
                     .WithMany(p => p.ProdutoAgendamentos)
                     .HasForeignKey(d => d.IdProdutos)
-                    .HasConstraintName("FK__PRODUTO_A__Id_Pr__76969D2E");
+                    .HasConstraintName("FK__PRODUTO_A__Id_Pr__6B24EA82");
             });
 
             modelBuilder.Entity<Produtos>(entity =>
@@ -241,8 +242,7 @@ namespace Desafio_Pluft.WebAPI.Domains
                 entity.HasOne(d => d.IdEstabelecNavigation)
                     .WithMany(p => p.Produtos)
                     .HasForeignKey(d => d.IdEstabelec)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__PRODUTOS__Id_Est__6FE99F9F");
+                    .HasConstraintName("FK__PRODUTOS__Id_Est__6754599E");
             });
 
             modelBuilder.Entity<StatusAgendamento>(entity =>
@@ -280,7 +280,7 @@ namespace Desafio_Pluft.WebAPI.Domains
                 entity.ToTable("USUARIOS");
 
                 entity.HasIndex(e => e.Email)
-                    .HasName("UQ__USUARIOS__A9D1053402150BE8")
+                    .HasName("UQ__USUARIOS__A9D1053492036C06")
                     .IsUnique();
 
                 entity.Property(e => e.DataCriacao)
@@ -313,12 +313,12 @@ namespace Desafio_Pluft.WebAPI.Domains
                 entity.HasOne(d => d.IdEstabelecimentoNavigation)
                     .WithMany(p => p.Usuarios)
                     .HasForeignKey(d => d.IdEstabelecimento)
-                    .HasConstraintName("FK__USUARIOS__Id_Est__4222D4EF");
+                    .HasConstraintName("FK__USUARIOS__Id_Est__5441852A");
 
                 entity.HasOne(d => d.IdTipoUsuarioNavigation)
                     .WithMany(p => p.Usuarios)
                     .HasForeignKey(d => d.IdTipoUsuario)
-                    .HasConstraintName("FK__USUARIOS__Id_Tip__4316F928");
+                    .HasConstraintName("FK__USUARIOS__Id_Tip__5535A963");
             });
         }
     }

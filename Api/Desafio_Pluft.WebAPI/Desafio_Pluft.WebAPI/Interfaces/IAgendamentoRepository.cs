@@ -1,4 +1,5 @@
 ﻿using Desafio_Pluft.WebAPI.Domains;
+using Desafio_Pluft.WebAPI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace Desafio_Pluft.WebAPI.Interfaces
         /// Cadastra um Agendamento.
         /// </summary>
         /// <param name="agendamento">Um objeto do tipo agendamento.</param>
-        void Cadastrar(Agendamentos agendamento);
+        void Cadastrar(Agendamentos agendamento, List<int> produtos);
 
         /// <summary>
         /// Lista os agendamentos que possuem o Id do Cliente passado por parâmetro;
@@ -46,5 +47,7 @@ namespace Desafio_Pluft.WebAPI.Interfaces
         /// <param name="id">Id do agendamento.</param>
         /// <returns>um agendamento.</returns>
         Agendamentos BuscarPorId(int id);
+
+        
     }
 }
